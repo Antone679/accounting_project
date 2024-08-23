@@ -1,12 +1,19 @@
+package controller;
+
+import entity.MonthlyReport;
+import entity.YearlyReport;
+import util.CSVReader;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class ReportManager {
+public class ReportController {
     public static MonthlyReport createMonthlyReport(int month) throws IOException {
         return new MonthlyReport(month, CSVReader.getFlowsPerMonth(month));
     }
@@ -18,8 +25,9 @@ public class ReportManager {
         }
         return monthlyReports;
     }
+
     public static void printInfoAllMonths() throws IOException {
-        for (MonthlyReport mr : getAllMonthlyReportsAsList()){
+        for (MonthlyReport mr : getAllMonthlyReportsAsList()) {
             System.out.println(mr.toString());
         }
     }
@@ -32,11 +40,12 @@ public class ReportManager {
             if (listFromMonthMethod.get(i).getIncome() != listFromYearMethod.get(i).getIncome()
                     || listFromMonthMethod.get(i).getExpense() != listFromYearMethod.get(i).getExpense()) {
                 isEquals = false;
-                System.out.println("Расхождение: \n" +
+                System.out.println("Расхождение: " + Month.of(i + 1) + "\n" +
                         "прибыль за месяц " + listFromMonthMethod.get(i).getIncome() + "\n" +
                         "прибыль по годовому " + listFromYearMethod.get(i).getIncome() + "\n" +
                         "расходы за месяц " + listFromMonthMethod.get(i).getExpense() + "\n" +
                         "расходы по годовому " + listFromYearMethod.get(i).getExpense());
+                System.out.println();
             }
         }
         return isEquals;
@@ -46,7 +55,7 @@ public class ReportManager {
         return new YearlyReport(CSVReader.getYearlyReport());
     }
 
-    public static void printYearlyReport(){
+    public static void printYearlyReport() {
         YearlyReport yearlyReport = createYearlyReport();
         System.out.println(yearlyReport);
         yearlyReport.getDifferenceBetweenIncomeAndExpensePerMonth();

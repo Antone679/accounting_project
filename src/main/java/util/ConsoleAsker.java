@@ -1,5 +1,8 @@
+package util;
+
+import controller.ReportController;
+
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class ConsoleAsker {
@@ -27,16 +30,16 @@ public class ConsoleAsker {
 
             switch (number) {
                 case 1:
-                    ReportManager.getAllMonthlyReportsAsList();
+                    ReportController.getAllMonthlyReportsAsList();
                     break;
                 case 2:
-                    ReportManager.createYearlyReport();
+                    ReportController.createYearlyReport();
                     break;
-                case 3: ReportManager.compareYearToMonthReports();
+                case 3: ReportController.compareYearToMonthReports();
                     break;
-                case 4: ReportManager.printInfoAllMonths();
+                case 4: ReportController.printInfoAllMonths();
                     break;
-                case 5: ReportManager.printYearlyReport();
+                case 5: ReportController.printYearlyReport();
                 break;
                 case 6:
                     System.out.println("Завершение работы программы!");

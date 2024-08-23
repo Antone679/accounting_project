@@ -1,3 +1,7 @@
+package entity;
+
+import entity.Flow;
+
 import java.time.Month;
 import java.util.HashMap;
 import java.util.List;

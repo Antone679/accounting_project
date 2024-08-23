@@ -1,3 +1,7 @@
+package entity;
+
+import entity.MonthlyReport;
+
 import java.time.Month;
 import java.util.List;
 

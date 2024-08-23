@@ -1,3 +1,5 @@
+package entity;
+
 public class Flow {
     private String Name;
     private boolean isExpense;
@@ -53,7 +55,7 @@ public class Flow {
 
     @Override
     public String toString() {
-        return "Flow{" +
+        return "entity.Flow{" +
                 "Name='" + Name + '\'' +
                 ", isExpense=" + isExpense +
                 ", quantity=" + quantity +
